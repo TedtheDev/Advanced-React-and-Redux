@@ -9,7 +9,7 @@ const mongoose = require('mongoose');
 const config = require('./config/config');
 
 // DB Setup
-mongoose.connect(config.mongdb.url);
+mongoose.connect(config.mongodb.url);
 
 // App setup
 app.use(morgan('combined'));
