@@ -7,12 +7,13 @@ const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
 const config = require('./config/config');
-
+const cors = require('cors');
 // DB Setup
 mongoose.connect(config.mongodb.url);
 
 // App setup
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*'} ));
 router(app);
 
