@@ -3,7 +3,8 @@ import { browserHistory } from 'react-router';
 import { 
     AUTH_USER,
     UNAUTH_USER, 
-    AUTH_ERROR
+    AUTH_ERROR,
+    FETCH_MESSAGE
  } from './types';
 
 const ROOT_URL = 'http://localhost:3090';
@@ -61,7 +62,10 @@ export function fetchMessage() {
             headers: { authorization: localStorage.getItem('token') }
         })
             .then(response => {
-                console.log(response)
+                dispatch({
+                    type: FETCH_MESSAGE,
+                    payload: response.data.message
+                })
             })
             .catch(err => console.log(err));
     }
