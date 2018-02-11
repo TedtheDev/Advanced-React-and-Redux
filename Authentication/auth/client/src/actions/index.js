@@ -16,10 +16,10 @@ export function signinUser({email, password}) {
                 // If request is good...
                 // - Save the JWT Token
                 localStorage.setItem('token', response.data.token);
-                // - Redirect to the route '/feature'
-                browserHistory.push('/feature');
                 // - Update state to indicate user is authenticated
                 dispatch({type: AUTH_USER})
+                // - Redirect to the route '/feature'
+                browserHistory.push('/feature');
             })
             .catch(err => {
                 // If request is bad....
@@ -35,8 +35,8 @@ export function signupUser({email, password}) {
             .then(response => {
                 console.log(response)
                 localStorage.setItem('token', response.data.token);
-                browserHistory.push('/feature');
                 dispatch({type: AUTH_USER});
+                browserHistory.push('/feature');
             })
             .catch(response => dispatch(authError(response.response.data.error)));
     }
